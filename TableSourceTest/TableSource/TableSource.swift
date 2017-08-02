@@ -9,7 +9,7 @@
 import UIKit
 
 class TableSource: NSObject {
-    let sections: [TableSection]
+    var sections: [TableSection]
     
     // MARK: Initialization
     init(sections: [TableSection]) {
@@ -23,6 +23,11 @@ extension TableSource {
         tableView.delegate = self
         tableView.dataSource = self
         sections.forEach { $0.install(on: tableView) }
+    }
+    
+    func update(models: [Any], at index: Int = 0) {
+        guard index < sections.count else { return }
+        sections[index].models = models
     }
 }
 

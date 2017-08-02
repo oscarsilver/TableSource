@@ -10,7 +10,7 @@ import UIKit
 
 struct TableSection {
     let cellInfo: CellInfo
-    let models: [Any]
+    var models: [Any]
 }
 
 // MARK: Public Methods
