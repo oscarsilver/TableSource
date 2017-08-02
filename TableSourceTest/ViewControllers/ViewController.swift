@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     let numbers: [Int] = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]
     
     fileprivate lazy var tableSource: TableSource = {
-        let cellInfo = CellInfo(type: NumberTVCell.self)
+        let cellInfo = CellInfo(type: NumberTVCell.self) { number in
+            print("Selected cell with number: \(number)")
+        }
         let section = TableSection(cellInfo: cellInfo, models: self.numbers)
         let tableSource = TableSource(sections: [section])
         return tableSource
